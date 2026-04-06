@@ -2,11 +2,15 @@ import * as vscode from 'vscode';
 import { SnippetModel } from './snippetModel';
 import { copySnippetText, insertSnippetIntoActiveEditor } from './snippetProvider';
 import type { SnippetRecord } from './types';
+import { openCreateSnippetPanel, openEditSnippetPanel } from './createSnippetPanel';
 import { SnippetsWebviewViewProvider } from './snippetsWebview';
 
 export function activate(context: vscode.ExtensionContext): void {
   const model = new SnippetModel();
-  const webviewProvider = new SnippetsWebviewViewProvider(context.extensionUri, model);
+  let webviewProvider: SnippetsWebviewViewProvider;
+  webviewProvider = new SnippetsWebviewViewProvider(context.extensionUri, model, (record) => {
+    openEditSnippetPanel(context.extensionUri, model, webviewProvider, record);
+  });
 
   const resolveSnippetArgument = (arg: unknown): SnippetRecord | undefined => {
     if (arg && typeof arg === 'object' && 'source' in arg && 'title' in arg) {
@@ -58,6 +62,10 @@ export function activate(context: vscode.ExtensionContext): void {
 
     vscode.commands.registerCommand('snippets-manager.searchSnippets', () => {
       webviewProvider.focusFilter();
+    }),
+
+    vscode.commands.registerCommand('snippets-manager.createSnippet', () => {
+      openCreateSnippetPanel(context.extensionUri, model, webviewProvider);
     }),
   );
 }

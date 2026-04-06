@@ -7,6 +7,8 @@ export interface SnippetRecord {
   prefix: string;
   code: string;
   source: string;
+  /** Absolute path to the snippet file on disk (for edit/delete). */
+  filePath: string;
 }
 
 /** Shape inside VS Code JSON snippet files. */

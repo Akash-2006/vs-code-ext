@@ -1,9 +1,31 @@
 {
-  "name": "snippets-manager",
+  "name": "akash-snippet-library",
   "displayName": "Snippets Manager",
-  "description": "Browse, search, insert, and copy user snippets from the sidebar.",
-  "version": "1.0.0",
-  "publisher": "snippets-manager",
+  "description": "Browse, search, insert, copy, create, edit, and delete user snippets in a side bar — global .code-snippets or per-language JSON.",
+  "version": "1.1.0",
+  "publisher": "Akash2006",
+  "license": "MIT",
+  "icon": "media/icon.png",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Akash-2006/vs-code-ext.git"
+  },
+  "bugs": {
+    "url": "https://github.com/Akash-2006/vs-code-ext/issues"
+  },
+  "homepage": "https://github.com/Akash-2006/vs-code-ext#readme",
+  "keywords": [
+    "snippets",
+    "sidebar",
+    "insert",
+    "clipboard",
+    "productivity",
+    "snippet",
+    "library",
+    "edit",
+    "delete",
+    "global"
+  ],
   "engines": {
     "vscode": "^1.85.0"
   },
@@ -12,12 +34,12 @@
     "Snippets"
   ],
   "activationEvents": [
-    "onStartupFinished",
     "onView:snippetsManagerView",
     "onCommand:snippets-manager.searchSnippets",
     "onCommand:snippets-manager.refreshSnippets",
     "onCommand:snippets-manager.insertSnippet",
-    "onCommand:snippets-manager.copySnippet"
+    "onCommand:snippets-manager.copySnippet",
+    "onCommand:snippets-manager.createSnippet"
   ],
   "main": "./out/extension.js",
   "contributes": {
@@ -60,6 +82,12 @@
         "command": "snippets-manager.refreshSnippets",
         "title": "Refresh Snippets",
         "category": "Snippets Manager"
+      },
+      {
+        "command": "snippets-manager.createSnippet",
+        "title": "Create Snippet",
+        "category": "Snippets Manager",
+        "icon": "$(add)"
       }
     ],
     "menus": {
@@ -71,6 +99,11 @@
         },
         {
           "command": "snippets-manager.searchSnippets",
+          "when": "view == snippetsManagerView",
+          "group": "navigation"
+        },
+        {
+          "command": "snippets-manager.createSnippet",
           "when": "view == snippetsManagerView",
           "group": "navigation"
         }
@@ -89,7 +122,7 @@
     "vscode:prepublish": "npm run compile",
     "compile": "tsc -p ./",
     "watch": "tsc -watch -p ./",
-    "pack": "vsce package --no-dependencies --allow-missing-repository --skip-license --allow-package-all-secrets --allow-package-env-file"
+    "pack": "vsce package"
   },
   "devDependencies": {
     "@types/node": "^20.11.0",

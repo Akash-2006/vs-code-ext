@@ -5,7 +5,7 @@ import type { RawSnippetDefinition, SnippetFileJson, SnippetRecord } from './typ
 
 const SNIPPET_EXTENSIONS = new Set(['.json', '.code-snippets']);
 
-function isSnippetDefinition(v: unknown): v is RawSnippetDefinition {
+export function isSnippetDefinition(v: unknown): v is RawSnippetDefinition {
   if (!v || typeof v !== 'object') {
     return false;
   }
@@ -72,6 +72,7 @@ function parseSnippetFile(
   contents: string,
   sourceFileName: string,
   rootLabel: string,
+  absoluteFilePath: string,
 ): SnippetRecord[] {
   let data: unknown;
   try {
@@ -98,6 +99,7 @@ function parseSnippetFile(
       prefix,
       code,
       source,
+      filePath: absoluteFilePath,
     });
   }
   return out;
@@ -133,7 +135,7 @@ async function loadFromDir(root: SnippetRoot): Promise<SnippetRecord[]> {
     } catch {
       continue;
     }
-    results.push(...parseSnippetFile(text, name, root.label));
+    results.push(...parseSnippetFile(text, name, root.label, full));
   }
   return results;
 }

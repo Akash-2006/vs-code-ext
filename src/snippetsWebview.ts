@@ -1,7 +1,9 @@
+import * as path from 'path';
 import * as vscode from 'vscode';
 import type { SnippetModel } from './snippetModel';
 import { findSnippetByKey, groupSnippetsBySource } from './snippetModel';
 import { copySnippetText, insertSnippetIntoActiveEditor } from './snippetProvider';
+import { deleteSnippetFromFile } from './snippetWriter';
 import type { SnippetRecord } from './types';
 
 type GroupPayload = { source: string; snippets: SnippetRecord[] };
@@ -14,6 +16,7 @@ export class SnippetsWebviewViewProvider implements vscode.WebviewViewProvider {
   constructor(
     private readonly extensionUri: vscode.Uri,
     private readonly model: SnippetModel,
+    private readonly onEditSnippet: (record: SnippetRecord) => void,
   ) {}
 
   async resolveWebviewView(webviewView: vscode.WebviewView): Promise<void> {
@@ -37,6 +40,33 @@ export class SnippetsWebviewViewProvider implements vscode.WebviewViewProvider {
         if (snippet) {
           await copySnippetText(snippet);
         }
+        return;
+      }
+      if (msg?.type === 'delete' && typeof msg.filePath === 'string' && typeof msg.title === 'string') {
+        const picked = await vscode.window.showWarningMessage(
+          `Delete snippet "${msg.title}" from ${path.basename(msg.filePath)}?`,
+          { modal: true },
+          'Delete',
+        );
+        if (picked === 'Delete') {
+          try {
+            await deleteSnippetFromFile(msg.filePath, msg.title);
+            await this.model.refresh();
+            await this.rebuildHtml();
+            void vscode.window.showInformationMessage(`Deleted snippet "${msg.title}".`);
+          } catch (e: unknown) {
+            const m = e instanceof Error ? e.message : 'Could not delete snippet.';
+            void vscode.window.showErrorMessage(m);
+          }
+        }
+        return;
+      }
+      if (msg?.type === 'edit' && typeof msg.source === 'string' && typeof msg.title === 'string') {
+        const snippet = findSnippetByKey(list, msg.source, msg.title);
+        if (snippet) {
+          this.onEditSnippet(snippet);
+        }
+        return;
       }
     });
 
@@ -211,9 +241,9 @@ function getStyles(): string {
       color: var(--vscode-editor-foreground, #d4d4d4);
     }
     .preview-code.show { display: block; }
-    .actions { display: flex; gap: 6px; margin-top: 6px; }
+    .actions { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 6px; }
     .actions button {
-      flex: 1; padding: 5px 10px; font-size: 11px; font-family: inherit;
+      flex: 1 1 38%; min-width: 64px; padding: 5px 8px; font-size: 11px; font-family: inherit;
       border-radius: 4px; border: none; cursor: pointer;
       background: var(--vscode-button-secondaryBackground, #3a3d41);
       color: var(--vscode-button-secondaryForeground, #cccccc);
@@ -221,6 +251,10 @@ function getStyles(): string {
     .actions button.primary {
       background: var(--vscode-button-background, #0e639c);
       color: var(--vscode-button-foreground, #ffffff);
+    }
+    .actions button.danger {
+      background: rgba(241, 76, 76, 0.2);
+      color: var(--vscode-errorForeground, #f88070);
     }
     .actions button:hover { filter: brightness(1.1); }
   `;
@@ -362,8 +396,24 @@ function getScript(): string {
       vscode.postMessage({ type: 'copy', source: s.source, title: s.title });
     });
 
+    var ed = document.createElement('button');
+    ed.type = 'button'; ed.textContent = 'Edit';
+    ed.addEventListener('click', function (e) {
+      e.stopPropagation();
+      vscode.postMessage({ type: 'edit', source: s.source, title: s.title });
+    });
+
+    var del = document.createElement('button');
+    del.type = 'button'; del.className = 'danger'; del.textContent = 'Delete';
+    del.addEventListener('click', function (e) {
+      e.stopPropagation();
+      vscode.postMessage({ type: 'delete', filePath: s.filePath, title: s.title });
+    });
+
     actions.appendChild(ins);
     actions.appendChild(cp);
+    actions.appendChild(ed);
+    actions.appendChild(del);
     card.appendChild(actions);
     return card;
   }
