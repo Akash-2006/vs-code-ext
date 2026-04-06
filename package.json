@@ -1,6 +1,6 @@
 {
   "name": "akash-snippet-library",
-  "displayName": "Snippets Manager",
+  "displayName": "Step Snippet Library",
   "description": "Browse, search, insert, copy, create, edit, and delete user snippets in a side bar — global .code-snippets or per-language JSON.",
   "version": "1.1.0",
   "publisher": "Akash2006",
@@ -58,7 +58,7 @@
           "type": "webview",
           "id": "snippetsManagerView",
           "name": "Library",
-          "contextualTitle": "Snippets Manager"
+          "contextualTitle": "Step Snippet Library"
         }
       ]
     },
@@ -66,27 +66,27 @@
       {
         "command": "snippets-manager.insertSnippet",
         "title": "Insert Snippet",
-        "category": "Snippets Manager"
+        "category": "Step Snippet Library"
       },
       {
         "command": "snippets-manager.copySnippet",
         "title": "Copy Snippet",
-        "category": "Snippets Manager"
+        "category": "Step Snippet Library"
       },
       {
         "command": "snippets-manager.searchSnippets",
         "title": "Search Snippets",
-        "category": "Snippets Manager"
+        "category": "Step Snippet Library"
       },
       {
         "command": "snippets-manager.refreshSnippets",
         "title": "Refresh Snippets",
-        "category": "Snippets Manager"
+        "category": "Step Snippet Library"
       },
       {
         "command": "snippets-manager.createSnippet",
         "title": "Create Snippet",
-        "category": "Snippets Manager",
+        "category": "Step Snippet Library",
         "icon": "$(add)"
       }
     ],

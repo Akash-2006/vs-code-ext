@@ -1,4 +1,4 @@
-# Snippets Manager
+# Step Snippet Library
 
 Browse, search, **insert**, **copy**, **create**, **edit**, and **delete** **your user snippets** from a dedicated side bar. It loads snippet files from **VS Code** and **Cursor** `User/snippets` (`*.json` and `*.code-snippets`), groups them by file, and supports **global** snippets (default `code.code-snippets`) or **language-specific** JSON files.
 
@@ -8,7 +8,7 @@ Browse, search, **insert**, **copy**, **create**, **edit**, and **delete** **you
 
 ```
 ┌──────────────────────────────────────────────────────────────────────────┐
-│  [≡] File   Edit   ...                        Snippets Manager      [- □ ×] │
+│  [≡] File   Edit   ...                   Step Snippet Library      [- □ ×] │
 ├───┬────────────────────────────────────────────────────────────────────────┤
 │   │                                                                        │
 │ S │  ┌─ Library (Snippets) ─────────────────────────────────────────────┐  │
@@ -84,7 +84,7 @@ flowchart LR
         V["VS Code<br/>User/snippets"]
         C["Cursor<br/>User/snippets"]
     end
-    subgraph Ext["Snippets Manager"]
+    subgraph Ext["Step Snippet Library"]
         L[Loader]
         M[Grouped list]
         W[Library webview]
@@ -103,9 +103,9 @@ Paths follow the usual app data layout for your OS (for example on macOS: `~/Lib
 
 | Action | How to run |
 |--------|------------|
-| **Search Snippets** (focus the search box) | Side bar: magnifier in the view title, or Command Palette → “Snippets Manager: Search Snippets”, or **Ctrl+Alt+S** (Windows/Linux) / **⌘⌥S** (macOS) while the editor has focus |
-| **Refresh Snippets** | View title refresh icon, or Command Palette → “Snippets Manager: Refresh Snippets” |
-| **Create Snippet** | Side bar: **+** or Command Palette → “Snippets Manager: Create Snippet”. Defaults to **`code.code-snippets`** (all languages); use **existing `.json` file** only for a single language; **Title**, **Prefix**, and **Body** are required |
+| **Search Snippets** (focus the search box) | Side bar: magnifier in the view title, or Command Palette → “Step Snippet Library: Search Snippets”, or **Ctrl+Alt+S** (Windows/Linux) / **⌘⌥S** (macOS) while the editor has focus |
+| **Refresh Snippets** | View title refresh icon, or Command Palette → “Step Snippet Library: Refresh Snippets” |
+| **Create Snippet** | Side bar: **+** or Command Palette → “Step Snippet Library: Create Snippet”. Defaults to **`code.code-snippets`** (all languages); use **existing `.json` file** only for a single language; **Title**, **Prefix**, and **Body** are required |
 | **Insert / Copy / Edit / Delete** | Library cards: **Insert**, **Copy**, **Edit** (opens form; renames title if you change it), **Delete** (confirmation). Palette insert/copy still expect side bar context. |
 
 ---
@@ -142,7 +142,7 @@ npm run pack
 
 ## Privacy
 
-Snippets Manager reads your local user snippet files (VS Code / Cursor `User/snippets`) to populate the Library. It does **not** send snippet content over the network, collect telemetry, or call remote APIs.
+This extension reads your local user snippet files (VS Code / Cursor `User/snippets`) to populate the Library. It does **not** send snippet content over the network, collect telemetry, or call remote APIs.
 
 ---
 
