@@ -1,8 +1,8 @@
 {
-  "name": "akash-snippet-library",
-  "displayName": "Step Snippet Library",
+  "name": "snippet-search-fast-code-snippets",
+  "displayName": "Snippet Search - Fast Code Snippets",
   "description": "Browse, search, insert, copy, create, edit, and delete user snippets in a side bar — global .code-snippets or per-language JSON.",
-  "version": "1.1.0",
+  "version": "1.2.0",
   "publisher": "Akash2006",
   "license": "MIT",
   "icon": "media/icon.png",
@@ -16,15 +16,10 @@
   "homepage": "https://github.com/Akash-2006/vs-code-ext#readme",
   "keywords": [
     "snippets",
-    "sidebar",
-    "insert",
-    "clipboard",
-    "productivity",
-    "snippet",
-    "library",
-    "edit",
-    "delete",
-    "global"
+    "code snippets",
+    "search snippets",
+    "developer productivity",
+    "vscode snippets"
   ],
   "engines": {
     "vscode": "^1.85.0"
@@ -58,7 +53,7 @@
           "type": "webview",
           "id": "snippetsManagerView",
           "name": "Library",
-          "contextualTitle": "Step Snippet Library"
+          "contextualTitle": "Snippet Search - Fast Code Snippets"
         }
       ]
     },
@@ -66,27 +61,27 @@
       {
         "command": "snippets-manager.insertSnippet",
         "title": "Insert Snippet",
-        "category": "Step Snippet Library"
+        "category": "Snippet Search - Fast Code Snippets"
       },
       {
         "command": "snippets-manager.copySnippet",
         "title": "Copy Snippet",
-        "category": "Step Snippet Library"
+        "category": "Snippet Search - Fast Code Snippets"
       },
       {
         "command": "snippets-manager.searchSnippets",
         "title": "Search Snippets",
-        "category": "Step Snippet Library"
+        "category": "Snippet Search - Fast Code Snippets"
       },
       {
         "command": "snippets-manager.refreshSnippets",
         "title": "Refresh Snippets",
-        "category": "Step Snippet Library"
+        "category": "Snippet Search - Fast Code Snippets"
       },
       {
         "command": "snippets-manager.createSnippet",
         "title": "Create Snippet",
-        "category": "Step Snippet Library",
+        "category": "Snippet Search - Fast Code Snippets",
         "icon": "$(add)"
       }
     ],

@@ -5,6 +5,14 @@ All notable changes to this project are documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.2.0] - 2026-04-07
+
+### Changed
+
+- Marketplace extension `name` → `snippet-search-fast-code-snippets`; **display name:** **Snippet Search - Fast Code Snippets**.
+- **Keywords:** snippets, code snippets, search snippets, developer productivity, vscode snippets.
+- **README:** screenshots replace Mermaid diagrams; `media/readme-snippet-search-1.png`, `media/readme-snippet-search-2.png`.
+
 ## [1.1.0] - 2026-04-06
 
 ### Added
@@ -25,5 +33,6 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Search/filter, **Insert** at cursor, **Copy** to clipboard, and **Refresh** after editing snippet files on disk.
 - Command Palette commands and editor keybinding for **Search Snippets** (Windows/Linux: Ctrl+Alt+S, macOS: Cmd+Alt+S).
 
+[1.2.0]: https://github.com/Akash-2006/vs-code-ext
 [1.1.0]: https://github.com/Akash-2006/vs-code-ext
 [1.0.0]: https://github.com/Akash-2006/vs-code-ext
