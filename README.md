@@ -1,4 +1,4 @@
-# Snippet Search - Fast Code Snippets
+# Snippet Search Pro - Fast Code Snippets
 
 Browse, search, **insert**, **copy**, **create**, **edit**, and **delete** your user snippets from a dedicated side bar. The extension loads snippet files from **VS Code** and **Cursor** `User/snippets` (`*.json` and `*.code-snippets`), groups them by file, and supports **global** snippets (default `code.code-snippets`) or **language-specific** JSON files.
 
@@ -33,9 +33,9 @@ The side bar lists every snippet from `*.json` and `*.code-snippets` files in th
 
 | Action | How to run |
 |--------|------------|
-| **Search Snippets** (focus the search box) | Side bar: magnifier in the view title, or Command Palette → **Snippet Search - Fast Code Snippets: Search Snippets**, or **Ctrl+Alt+S** (Windows/Linux) / **⌘⌥S** (macOS) while the editor has focus |
-| **Refresh Snippets** | View title refresh icon, or Command Palette → **Snippet Search - Fast Code Snippets: Refresh Snippets** |
-| **Create Snippet** | Side bar **+** or Command Palette → **Snippet Search - Fast Code Snippets: Create Snippet**. Defaults to **`code.code-snippets`** (all languages); use an **existing `.json` file** only for a single language. **Title**, **Prefix**, and **Body** are required. |
+| **Search Snippets** (focus the search box) | Side bar: magnifier in the view title, or Command Palette → **Snippet Search Pro - Fast Code Snippets: Search Snippets**, or **Ctrl+Alt+S** (Windows/Linux) / **⌘⌥S** (macOS) while the editor has focus |
+| **Refresh Snippets** | View title refresh icon, or Command Palette → **Snippet Search Pro - Fast Code Snippets: Refresh Snippets** |
+| **Create Snippet** | Side bar **+** or Command Palette → **Snippet Search Pro - Fast Code Snippets: Create Snippet**. Defaults to **`code.code-snippets`** (all languages); use an **existing `.json` file** only for a single language. **Title**, **Prefix**, and **Body** are required. |
 | **Insert / Copy / Edit / Delete** | On each Library card. **Edit** opens a form (you can rename the title). **Delete** asks for confirmation. |
 
 ---

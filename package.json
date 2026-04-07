@@ -1,6 +1,6 @@
 {
   "name": "akash-snippet-library",
-  "displayName": "Snippet Search - Fast Code Snippets",
+  "displayName": "Snippet Search Pro - Fast Code Snippets",
   "description": "Browse, search, insert, copy, create, edit, and delete user snippets in a side bar — global .code-snippets or per-language JSON.",
   "version": "1.2.0",
   "publisher": "Akash2006",
@@ -53,7 +53,7 @@
           "type": "webview",
           "id": "snippetsManagerView",
           "name": "Library",
-          "contextualTitle": "Snippet Search - Fast Code Snippets"
+          "contextualTitle": "Snippet Search Pro - Fast Code Snippets"
         }
       ]
     },
@@ -61,27 +61,27 @@
       {
         "command": "snippets-manager.insertSnippet",
         "title": "Insert Snippet",
-        "category": "Snippet Search - Fast Code Snippets"
+        "category": "Snippet Search Pro - Fast Code Snippets"
       },
       {
         "command": "snippets-manager.copySnippet",
         "title": "Copy Snippet",
-        "category": "Snippet Search - Fast Code Snippets"
+        "category": "Snippet Search Pro - Fast Code Snippets"
       },
       {
         "command": "snippets-manager.searchSnippets",
         "title": "Search Snippets",
-        "category": "Snippet Search - Fast Code Snippets"
+        "category": "Snippet Search Pro - Fast Code Snippets"
       },
       {
         "command": "snippets-manager.refreshSnippets",
         "title": "Refresh Snippets",
-        "category": "Snippet Search - Fast Code Snippets"
+        "category": "Snippet Search Pro - Fast Code Snippets"
       },
       {
         "command": "snippets-manager.createSnippet",
         "title": "Create Snippet",
-        "category": "Snippet Search - Fast Code Snippets",
+        "category": "Snippet Search Pro - Fast Code Snippets",
         "icon": "$(add)"
       }
     ],
